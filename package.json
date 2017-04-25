@@ -1,0 +1,14 @@
+{
+  "name": "seed-manager",
+  "version": "1.0.0",
+  "description": "A seed manager complient with mongoose library.",
+  "main": "index.js",
+  "repository": "https://github.com/alxolr/seed-manager.git",
+  "author": "Alexandru Olaru <alxolr@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}
