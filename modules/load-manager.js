@@ -1,6 +1,6 @@
 const async = require('async');
 
-function LoaderManager(loaders) {
+function LoaderManager(loaders = []) {
   this.loaders = loaders;
 
   function add(loader) {
