@@ -1,10 +1,12 @@
 const async = require('async');
 
-function SeedLoader(seeds = [], schema = {}) {
-  this.seeds = seeds;
-  this.schema = schema;
+class SeedLoader {
+  constructor(seeds = [], schema = {}) {
+    this.seeds = seeds;
+    this.schema = schema;
+  }
 
-  function load() {
+  load() {
     return new Promise((resolve, reject) => {
       async.each(this.seeds, (seed, cb) => {
         // eslint-disable-next-line
@@ -20,14 +22,9 @@ function SeedLoader(seeds = [], schema = {}) {
     });
   }
 
-  function drop() {
+  drop() {
     return this.schema.remove({});
   }
-
-  return {
-    load,
-    drop,
-  };
 }
 
 module.exports = SeedLoader;

@@ -1,22 +1,24 @@
 const async = require('async');
 
-function LoaderManager(loaders = []) {
-  this.loaders = loaders;
+class LoaderManager {
+  constructor(loaders = []) {
+    this.loaders = loaders;
+  }
 
-  function add(loader) {
+  add(loader) {
     if (this.loaders.indexOf(loader) !== -1) {
       this.loaders.push(loader);
     }
   }
 
-  function remove(loader) {
+  remove(loader) {
     const position = this.loaders.indexOf(loader);
     if (position !== -1) {
       this.loaders.splice(position, 1);
     }
   }
 
-  function load() {
+  load() {
     return new Promise((resolve, reject) => {
       async.each(this.loaders, (loader, cb) => {
         loader.drop()
@@ -30,7 +32,7 @@ function LoaderManager(loaders = []) {
     });
   }
 
-  function drop() {
+  drop() {
     return new Promise((resolve, reject) => {
       async.each(this.loaders, (loader, cb) => {
         loader.drop()
@@ -41,13 +43,6 @@ function LoaderManager(loaders = []) {
       });
     });
   }
-
-  return {
-    add,
-    remove,
-    load,
-    drop,
-  };
 }
 
 module.exports = LoaderManager;
