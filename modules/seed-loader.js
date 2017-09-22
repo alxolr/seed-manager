@@ -8,13 +8,12 @@ class SeedLoader {
 
   load() {
     return new Promise((resolve, reject) => {
-      async.each(this.seeds, (seed, cb) => {
+      async.eachSeries(this.seeds, (seed, cb) => {
         // eslint-disable-next-line
         const model = new this.schema(seed);
-        model.save((err) => {
-          if (err) cb(err);
-          cb();
-        });
+        model.save().then((model) => {
+          cb(null, model);
+        })
       }, (err) => {
         if (err) reject(err);
         resolve();
