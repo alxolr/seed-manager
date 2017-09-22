@@ -1,6 +1,6 @@
 {
   "name": "seed-manager",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A seed manager complient with mongoose library.",
   "main": "index.js",
   "repository": "https://github.com/alxolr/seed-manager.git",
