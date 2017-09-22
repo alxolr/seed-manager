@@ -20,13 +20,11 @@ class LoaderManager {
 
   load() {
     return new Promise((resolve, reject) => {
-      async.each(this.loaders, (loader, cb) => {
-        loader.drop()
-          .then(loader.load())
+      async.eachSeries(this.loaders, (loader, cb) => {
+        loader.load()
           .then(() => cb());
       }, (err, data) => {
         if (err) reject(err);
-
         resolve(data);
       });
     });
